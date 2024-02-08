@@ -9,4 +9,5 @@ export abstract class IUserRepository {
     data: UsernameAndEmail,
   ): Promise<UserCreatedDTO | null>;
   abstract save(data: ICreateUserDTO): Promise<UserCreatedDTO>;
+  abstract findByUsername(username: string): Promise<UserCreatedDTO | null>;
 }
