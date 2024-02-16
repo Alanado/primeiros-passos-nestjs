@@ -5,6 +5,8 @@ import { CreateUserService } from './services/create-user.service';
 import { IUserRepository } from './repositories/user.repository';
 import { UserPrismaRepository } from './repositories/prisma/user.prisma.repository';
 import { ProfileUserService } from './services/profile-user.service';
+import { APP_PIPE } from '@nestjs/core';
+import { ZodValidationPipe } from 'nestjs-zod';
 
 @Module({
   controllers: [UserController],
@@ -14,6 +16,7 @@ import { ProfileUserService } from './services/profile-user.service';
     CreateUserService,
     ProfileUserService,
     { provide: IUserRepository, useClass: UserPrismaRepository },
+    { provide: APP_PIPE, useClass: ZodValidationPipe },
   ],
 })
 export class UserModule {}
